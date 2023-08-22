@@ -84,9 +84,10 @@ const YamlInput = React.forwardRef(
       const currentPos = view.current.state.selection.ranges[0].from;
       const to = currentText.length;
 
+      const newCursorPos = Math.min(currentPos, text.length);
       view.current.dispatch({
         changes: { from: 0, to, insert: text },
-        selection: EditorSelection.cursor(currentPos),
+        selection: EditorSelection.cursor(newCursorPos),
       });
     };
 
